@@ -1,11 +1,31 @@
-<div align="center">
+# ABM Success Viz Component
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A high-fidelity, animated React component visualizing Account-Based Marketing (ABM) success metrics. This standalone tile features a premium dark UI with gold accents, smooth entrance animations, and counting number effects, perfectly replicating the "Elite Enterprise" dashboard aesthetic.
 
-  <h1>Built with AI Studio</h2>
+## Tech Stack
+- **React 18+**: Component architecture.
+- **Tailwind CSS**: Styling (colors, spacing, typography).
+- **Framer Motion**: Complex entrance and value animations.
+- **Lucide React**: Modern SVG iconography.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Usage
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+1.  Ensure you have dependencies installed:
+    ```bash
+    npm install framer-motion lucide-react clsx tailwind-merge
+    ```
+2.  Import and drop the component into any container. It is designed to fit a 600x600 space but is flex-responsive.
+    ```tsx
+    import FleetTile from './components/FleetTile';
 
-</div>
+    function Dashboard() {
+      return (
+        <div className="flex justify-center items-center h-screen bg-slate-950">
+          <FleetTile />
+        </div>
+      )
+    }
+    ```
+
+## App Name
+**Royal Blue & Gold ABM Success Viz**
