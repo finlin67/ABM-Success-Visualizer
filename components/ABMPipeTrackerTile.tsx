@@ -1,6 +1,18 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { motion, useSpring, useTransform, animate } from 'framer-motion';
 import { Database, Award, TrendingUp, Zap, ArrowRight } from 'lucide-react';
+
+// --- Interfaces ---
+
+interface AnimatedCounterProps {
+  value: number;
+  duration?: number;
+  toFixed?: number;
+  prefix?: string;
+  suffix?: string;
+}
 
 // --- Helper Components ---
 
@@ -8,16 +20,16 @@ import { Database, Award, TrendingUp, Zap, ArrowRight } from 'lucide-react';
  * AnimatedCounter
  * Animates a number from 0 to 'value' over 'duration'.
  */
-const AnimatedCounter: React.FC<{ value: number; duration?: number; toFixed?: number; prefix?: string; suffix?: string }> = ({ 
+function AnimatedCounter({ 
   value, 
   duration = 2, 
   toFixed = 0,
   prefix = "",
   suffix = ""
-}) => {
+}: AnimatedCounterProps) {
   const count = useSpring(0, { duration: duration * 1000, bounce: 0 });
   const rounded = useTransform(count, (latest) => `${prefix}${latest.toFixed(toFixed)}${suffix}`);
-  const [displayValue, setDisplayValue] = useState(`${prefix}0${suffix}`);
+  const [displayValue, setDisplayValue] = useState<string>(`${prefix}0${suffix}`);
 
   useEffect(() => {
     const animation = animate(count, value, { duration });
@@ -29,11 +41,11 @@ const AnimatedCounter: React.FC<{ value: number; duration?: number; toFixed?: nu
   }, [rounded]);
 
   return <span>{displayValue}</span>;
-};
+}
 
 // --- Main Component ---
 
-export default function FleetTile() {
+export default function ABMPipeTrackerTile() {
   return (
     <div className="w-full h-full flex justify-center items-center p-4">
       <motion.div 
@@ -184,27 +196,4 @@ export default function FleetTile() {
               transition={{ delay: 1.2 }}
               className="flex items-center gap-2.5"
             >
-              <div className="size-1.5 rounded-full bg-[#eab308]" />
-              <span className="text-[#eab308]/80 text-[9px] font-bold uppercase tracking-widest">
-                Success State
-              </span>
-            </motion.div>
-          </div>
-
-          <motion.button 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1.3 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#eab308] hover:bg-[#fde68a] text-[#020617] px-6 py-3 rounded-lg font-bold text-[11px] uppercase tracking-widest flex items-center gap-2 transition-colors shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]"
-          >
-            <span>View Full Report</span>
-            <ArrowRight size={16} strokeWidth={3} />
-          </motion.button>
-        </footer>
-
-      </motion.div>
-    </div>
-  );
-}
+              <div className="size-1.5

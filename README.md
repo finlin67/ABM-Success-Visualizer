@@ -16,12 +16,12 @@ A high-fidelity, animated React component visualizing Account-Based Marketing (A
     ```
 2.  Import and drop the component into any container. It is designed to fit a 600x600 space but is flex-responsive.
     ```tsx
-    import FleetTile from './components/FleetTile';
+    import ABMPipeTrackerTile from './components/ABMPipeTrackerTile';
 
     function Dashboard() {
       return (
         <div className="flex justify-center items-center h-screen bg-slate-950">
-          <FleetTile />
+          <ABMPipeTrackerTile />
         </div>
       )
     }
